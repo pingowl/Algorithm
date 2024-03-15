@@ -1,27 +1,23 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
-
+vector<pair<int,int>> v;
+int n, ret, s, e, now;
 int main() {
-    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-    int n; cin >> n;
-    vector<vector <int>> v(n, vector<int>(2));
-    
-    for (int i = 0; i < n; i++)
-    {
-        cin >> v[i][1] >> v[i][0]; //sort 기준이 첫번째 인자가 되니까        
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    cin >> n;
+    for(int i=0; i<n; i++){
+        cin >> s >> e;
+        v.push_back({e,s});
     }
-    sort(v.begin(), v.end());
-    int now; 
-    now = v[0][0];
-    int cnt=1;
-    for (int j = 1; j < n; j++) {
-        if (now <= v[j][1]) {
-            cnt += 1;
-            now = v[j][0];
+    sort(v.begin(), v.end()); 
+    for(pair<int,int> i: v){
+        if(now <= i.second){ 
+            now = i.first;
+            ret++;
         }
     }
-    cout << cnt;
+    cout << ret << "\n";
+    return 0;
 }
