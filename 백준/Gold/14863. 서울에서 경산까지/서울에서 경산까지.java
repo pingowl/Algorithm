@@ -27,7 +27,7 @@ public class Main {
 	}	
 	static int go(int idx,int t) {
 		if(idx==n) return 0;
-		if(dp[idx][t]>0) return dp[idx][t];
+		if(dp[idx][t]!=0) return dp[idx][t];
 		dp[idx][t] = Integer.MIN_VALUE;
 		if(t-time[idx]>=0) dp[idx][t] = Math.max(dp[idx][t], go(idx+1,t-time[idx])+cost[idx]);
 		if(t-time2[idx]>=0) dp[idx][t] = Math.max(dp[idx][t], go(idx+1,t-time2[idx])+cost2[idx]);
